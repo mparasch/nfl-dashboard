@@ -303,7 +303,7 @@ def update_scatter(conference, division, x_axis, y_axis):
          Input('Team_2', 'value')])
 def update_linegraph(line_y_axis, Team_1, Team_2):
     l = [Team_1, Team_2]
-    df = df_gameData[df_gameData['Team'].isin(l)]
+    df = df_gameData[df_gameData['Team'].isin(l)].sort_values(by='Date', ascending=True)
     label = str(line_y_axis)
     fig = px.line(df, x='Week', y=line_y_axis, color=df['Team'],
                   custom_data=['Week','Team','Team_score','Opponent','Opp_score',line_y_axis])
